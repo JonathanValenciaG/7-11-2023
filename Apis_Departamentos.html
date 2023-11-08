@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container text-center">Datos de Caldas
+        <div class="row">
+          <div class="col">
+            <h1>Año</h1>
+            <div id="resultado1">Aqui van los resultados 1 
+
+            </div>
+          </div>
+
+          <div class="col">
+            <h1>Departamento</h1>
+            <div id="resultado2">Aqui van los resultados 2</div>
+
+          </div>
+          <div class="col">
+            <h1>Poblacion</h1>
+            <div id="resultado3">Aqui van los resultado3</div>
+          </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="container text-center">Datos de Antioquia 
+      <div class="row">
+        <div class="col">
+          <h1>Año</h1>
+          <div id="resultado4">Aqui van los resultados 1 
+
+          </div>
+        </div>
+
+        <div class="col">
+          <h1>Departamento</h1>
+          <div id="resultado5">Aqui van los resultados 2</div>
+
+        </div>
+        <div class="col">
+          <h1>Poblacion</h1>
+          <div id="resultado6">Aqui van los resultado3</div>
+        </div>
+
+
+      </div>
+
+
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+      fetch('https://www.datos.gov.co/resource/ji8i-4anb.json')
+      .then(response=> response.json())
+      .then(data=>{
+        console.log(data)
+        var resultado1 = ``
+        var resultado2 = ``
+        var resultado3 = `` 
+        var resultado4 = ``
+        var resultado5 = ``
+        var resultado6 = `` 
+        data.forEach(function(dato){
+          if (dato.departamento =="Caldas"){
+
+              resultado1 += `${dato.ano}<br>` 
+              resultado2 += `${dato.departamento}<br>`
+              resultado3 += `${dato.poblacion_5_16}<br>`
+          }
+          if (dato.departamento =="Antioquia"){
+
+              resultado4 += `${dato.ano}<br>` 
+              resultado5 += `${dato.departamento}<br>`
+              resultado6 += `${dato.poblacion_5_16}<br>`
+          }
+
+          
+
+
+        })
+
+        document.getElementById("resultado1").innerHTML = resultado1
+        document.getElementById("resultado2").innerHTML = resultado2
+        document.getElementById("resultado3").innerHTML = resultado3
+        document.getElementById("resultado4").innerHTML = resultado4
+        document.getElementById("resultado5").innerHTML = resultado5
+        document.getElementById("resultado6").innerHTML = resultado6
+        
+
+
+      })
+      
+
+
+    </script>
+</body>
+</html>
